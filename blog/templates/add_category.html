@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} A new blog Category {% endblock %}
+
+  {% block content  %}
+  <h1 style="text-align: center;">Add Category</h1><br>
+
+  <div class="container">
+    <div class="row d flex align-items-center justify-content-center">
+      <div class="col-md-6">
+        <img src="{% static 'img\Webinar-rafiki.png' %}" width="90%" height="100%" alt="">
+      </div>
+      <div class="col-md-6">
+        {% if user.is_authenticated %}
+
+
+      
+        
+    <div class="form-group">
+      <form action="" method="Post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button class="btn btn-info">Add Category</button>
+        <a href="{% url 'home' %}" class="btn btn-secondary">Back</a>
+
+    </div>
+  
+{% else %}
+  
+Your're not allowed here! (and you know it...)
+{% endif %}
+  
+
+
+      </div>
+    </div>
+  </div>
+  
+  
+
+{% endblock  %}

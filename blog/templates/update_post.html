@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %} Edit Blog Post {% endblock %}
+
+  {% block content  %}
+
+{% if user.is_authenticated %}
+   {% if user.id == post.author.id %}
+      <h1>Update Post</h1><br><br>
+  
+        <div class="form-group">
+           <form action="" method="Post">
+             {% csrf_token %}
+             {{form.media}}
+             {{form.as_p}}
+             <button class="btn btn-warning">Update</button>
+             <a href="{% url 'home' %}" class="btn btn-secondary">Back</a>
+        </div>
+    {% else %}
+     Your are not allowed Here!..
+    {% endif %}
+  
+{% else %}
+  
+Your're not allowed here! (and you know it...)
+{% endif %}
+
+{% endblock  %}

@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block title %} Categories{% endblock %}
+  {% block content  %}
+
+{% if category_posts %}
+<h1>{{cats}}</h1><br>
+<ul>
+    {% for post in category_posts %}
+        <li><a href="{% url 'article-details' post.pk %}">{{post.title}} </a>- {{post.author}}<br>
+          {{post.category}}
+          {{post.author.first_name}} 
+          {{post.author.last_name}} -
+          {{post.post_date}}-
+        {% if user.is_authenticated %}
+            -<a href="{% url 'update_post' post.pk %}">(Edit)</a>
+            
+            <a href="{% url 'delete_post' post.pk %}">(Delete)</a><br>
+        {% endif %}
+            <br>
+            {{post.body | slice:':200' |safe}}</li>
+    {% endfor %}
+</ul>
+{% else %}
+       <h2>Sorry this Page is not Availabe...</h2>
+{% endif %}
+
+{% endblock  %} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

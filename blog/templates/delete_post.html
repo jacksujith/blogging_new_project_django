@@ -1,0 +1,42 @@
+
+{% extends "base.html" %}
+{% load static %}
+{% block title %} Delete Blog Post {% endblock title %}
+
+  {% block content  %}
+
+  <div class="container">
+    <div class="row d flex align-items-center justify-content-center">
+      <div class="col-md-6 ">
+        <img src="{% static '\img\Inbox cleanup.gif' %}" width="100%" height="110%" alt="">
+      </div>
+      <div class="col-md-6 ">
+        
+{% if user.is_authenticated %}
+{% if user.id == post.author.id %}
+  
+
+  <h1>Delete Blog!</h1><br><br>
+      <h2>Delete : {{post.title}}</h2><br>
+         <div class="form-group">
+          <form action="" method="Post">
+           {% csrf_token %}
+           <strong>Are you sure ?!</strong><br><br>
+           <button class="btn btn-danger">Delete Post</button>
+           <a href="{% url 'home' %}" class="btn btn-secondary">Back</a>
+
+         </div>
+ {% else %}
+ You're not allowed here! (and you know it..)
+ {% endif %}
+       
+{% else %}
+You're not allowed here! (and you know it..)
+
+{% endif %}
+      </div>
+    </div>
+  </div>
+
+
+{% endblock  %}
